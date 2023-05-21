@@ -1,9 +1,129 @@
 <mvc:View controllerName="createshipments.controller.main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-            <content />
-                <Text text="en proceso"></Text>
-        </content>
-    </Page>
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <App>
+        <Page id="page" title="{i18n>title}">
+            <content>
+                <f:Form editable="true">
+                    <f:layout>
+                        <f:ResponsiveGridLayout
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="3"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="4"
+                            emptySpanL="4"
+                            emptySpanM="4"
+                            emptySpanS="0"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="1"
+                            singleContainerFullSize="false" />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="{i18n>id}">
+                                    <f:fields>
+                                        <Text id="idText" text="{main>/nextId}" />
+                                    </f:fields>
+                                </f:FormElement>
+
+                                <f:FormElement label="{i18n>FechaSalida}">
+                                    <f:fields>
+                                        <DatePicker displayFormat="yyyy-MM-dd" value="" />
+                                    </f:fields>
+                                </f:FormElement>
+
+                                <f:FormElement label="{i18n>FechaLlegada}">
+                                    <f:fields>
+                                        <DatePicker displayFormat="yyyy-MM-dd" value="" />
+                                    </f:fields>
+                                </f:FormElement>
+
+                                <f:FormElement label="{i18n>Origen}">
+                                    <f:fields>
+                                        <Input value="" />
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="{i18n>Destino}">
+                                    <f:fields>
+                                        <Input value="" />
+                                    </f:fields>
+                                </f:FormElement>
+
+                    <f:FormElement label="{i18n>idConductor}">
+                    <f:fields>
+                        <ComboBox id="idConductorSelect" items="{
+                        path: '/Conductor',
+                        filters: [{ path: 'Ocupado', operator: 'EQ', value1: false }]
+                        }">
+                        <items>
+                            <core:ListItem key="{id}" text="{Nombre} {Apellidos}" />
+                        </items>
+                        </ComboBox>
+                    </f:fields>
+                    </f:FormElement>
+
+                    <f:FormElement label="{i18n>Matricula}">
+                    <f:fields>
+                        <ComboBox id="idVehiculoSelect" items="{
+                        path: '/Vehiculo',
+                        filters: [{ path: 'Ocupado', operator: 'EQ', value1: false }]
+                        }">
+                        <items>
+                            <core:ListItem key="{Matricula}" text="{Matricula}" />
+                        </items>
+                        </ComboBox>
+                    </f:fields>
+                    </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                    </f:formContainers>
+                </f:Form>
+
+                <Table id="mueblesTable" items="{path: '/Muebles', filters: [{ path: 'id', operator: 'StartsWith', value1: 'M' }]}">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <ToolbarSpacer/>
+                                <SearchField id="searchField" search="onSearch" width="auto" />
+                                                                <Button icon="sap-icon://refresh" press="onRefresh" />
+
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="{i18n>id}" />
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>Nombre}" />
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>Cantidad}" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{id}" />
+                                <Text text="{Nombre}" />
+                                <Input value="" width="5%" textAlign="Center" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
+        </Page>
+    </App>
 </mvc:View>
