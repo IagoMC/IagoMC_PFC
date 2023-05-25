@@ -1,82 +1,59 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "sap/ui/model/odata/v4/ODataModel",
-    "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"    
-  ], function (Controller, ODataModel,Filter, FilterOperator) {
-    "use strict";
+  "sap/ui/core/mvc/Controller",
+  "sap/ui/model/odata/v4/ODataModel",
+  "sap/ui/model/Filter",
+  "sap/ui/model/FilterOperator",
+  "sap/ui/model/Sorter",
+  "sap/m/MessageToast",
+  "sap/ui/model/json/JSONModel",
+  "sap/m/Text"
 
-        return Controller.extend("createshipments.controller.main", {
-          
-            onInit: function () {
-                /*
-        // Crear el modelo JSON para almacenar los datos
-        var oModel = new sap.ui.model.json.JSONModel();
-        this.getView().setModel(oModel, "main");
-  
-        // Llamar a la función para obtener y mostrar el próximo ID
-        this.getNextId();
-      },
-  
-      // Obtener y mostrar el próximo ID
-      getNextId: function () {
-        var oModel = new ODataModel({
-          serviceUrl: "https://81becfd3trial-dev-pfc-saphana-odatav4-srv.cfapps.us10-001.hana.ondemand.com/CatalogService/",
-          synchronizationMode: "None",
-          autoExpandSelect: true,
-          groupId: "$auto"
-        });
-  
-        var that = this;
-  
-        oModel.read("/Envios", {
-          success: function (oData) {
-            var aEnvios = oData.results;
-  
-            if (aEnvios.length > 0) {
-              var lastId = aEnvios[aEnvios.length - 1].id;
-              var lastDigits = parseInt(lastId.slice(-4));
-              var nextId = (lastDigits + 1).toString();
-  
-              var oViewModel = that.getView().getModel("main");
-              oViewModel.setProperty("/nextId", nextId);
-            } else {
-              var oViewModel = that.getView().getModel("main");
-              oViewModel.setProperty("/nextId", "EN0001");
-            }
-          },
-          error: function (oError) {
-            // Manejar el error de lectura del modelo
-          }
-        });
-        */
+], function (Controller, ODataModel, Filter, FilterOperator, Sorter, MessageToast, JSONModel, Text) {
+  "use strict";
 
-
-
-      },
-      onSearch: function(oEvent) {
-        var sValue = oEvent.getParameter("query");
-        var oTable = this.byId("mueblesTable");
-        var oBinding = oTable.getBinding("items");
-        var aFilters = [];
-
-        // Filtrar por nombre del mueble
-        var oNameFilter = new Filter("Nombre", FilterOperator.EQ, sValue);
-   
-        aFilters.push(oNameFilter);
-        if (!sValue || sValue.length === 0) {
-            var oIdFilter = new Filter("id", FilterOperator.StartsWith, "M");
-            aFilters.push(oIdFilter);
+  return Controller.extend("createshipments.controller.main", {
+    onInit: function () {
+     // this.mostrarUltimoId();
+    },
+/*
+    mostrarUltimoId: function () {
+      var sServiceUrl = "https://81becfd3trial-dev-pfc-saphana-odatav4-srv.cfapps.us10-001.hana.ondemand.com/CatalogService/";
+     
+      var oModel = new sap.ui.model.odata.v4.ODataModel(sServiceUrl, true);
+      
+      var oView = this.getView();
+      var oModel = new sap.ui.model.json.JSONModel();
+      oView.setModel(oModel);
+      
+      oModel.read("/Envios", {
+        success: function (oData) {
+          var lastEnvioId = oData.results[oData.results.length - 1].id;
+          var oJSONModel = new sap.ui.model.json.JSONModel({
+            value: lastEnvioId
+          });
+          oView.setModel(oJSONModel, "lastEnvioId");
+        },
+        error: function (oError) {
+          console.log(oError);
         }
-        // Aplicar los filtros
-         oBinding.filter(aFilters, sap.ui.model.FilterType.Control);
-      // oBinding.filter(aFilters);
-  
-    },
-    onRefresh: function () {
-        var oTable = this.byId("mueblesTable");
-        oTable.getBinding("items").refresh();
-    },
+      });
+     }, 
+*/
+    onSearch: function (event) {
+      // Obtener el valor de búsqueda ingresado
+      var query = event.getParameter("query");
 
-    });
+      var filter = new Filter("Nombre", FilterOperator.Contains, query);
+
+      // Obtener la referencia al modelo de datos
+      var oModel = this.getView().getModel();
+
+      // Obtener la referencia a la tabla
+      var table = this.getView().byId("mueblesTable");
+
+      // Obtener la referencia al enlace de la tabla y aplicar el filtro
+      var binding = table.getBinding("items");
+      binding.filter(filter);
+    }
   });
+});

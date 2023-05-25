@@ -7,7 +7,8 @@
     <App>
         <Page id="page" title="{i18n>title}">
             <content>
-                <f:Form editable="true">
+
+                <f:Form id="yourFormId"  editable="true">
                     <f:layout>
                         <f:ResponsiveGridLayout
                             labelSpanXL="3"
@@ -29,8 +30,9 @@
                             <f:formElements>
                                 <f:FormElement label="{i18n>id}">
                                     <f:fields>
-                                        <Text id="idText" text="{main>/nextId}" />
+                                      <Text text="{lastEnvioId>/value}" />
                                     </f:fields>
+
                                 </f:FormElement>
 
                                 <f:FormElement label="{i18n>FechaSalida}">
@@ -90,39 +92,31 @@
                         </f:FormContainer>
                     </f:formContainers>
                 </f:Form>
-
-                <Table id="mueblesTable" items="{path: '/Muebles', filters: [{ path: 'id', operator: 'StartsWith', value1: 'M' }]}">
-                    <headerToolbar>
-                        <OverflowToolbar>
-                            <content>
-                                <ToolbarSpacer/>
-                                <SearchField id="searchField" search="onSearch" width="auto" />
-                                                                <Button icon="sap-icon://refresh" press="onRefresh" />
-
-                            </content>
-                        </OverflowToolbar>
-                    </headerToolbar>
+                <SearchField width="20%" id="searchField" search="onSearch" ></SearchField>
+                <Table id="myTable" items="{/Muebles}">
                     <columns>
-                        <Column>
-                            <Text text="{i18n>id}" />
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>Nombre}" />
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>Cantidad}" />
-                        </Column>
+                    <Column>
+                        <Text text="Campo1" />
+                    </Column>
+                    <Column>
+                        <Text text="Campo2" />
+                    </Column>
+                    <Column>
+                        <Text text="Campo2" />
+                    </Column>                    
                     </columns>
                     <items>
-                        <ColumnListItem>
-                            <cells>
-                                <Text text="{id}" />
-                                <Text text="{Nombre}" />
-                                <Input value="" width="5%" textAlign="Center" />
-                            </cells>
-                        </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                        <Text text="{id}" />
+                        <Text text="{Nombre}" />
+                        <Input width="5%" value="" />
+
+                        </cells>
+                    </ColumnListItem>
                     </items>
                 </Table>
+
             </content>
         </Page>
     </App>
