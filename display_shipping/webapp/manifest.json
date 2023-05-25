@@ -104,6 +104,10 @@
           "target": [
             "Targetmain"
           ]
+        },{
+          "pattern": "shipping_details/{context}",
+          "name": "shipping_details",
+          "target": ["shipping_details"]
         }
       ],
       "targets": {
@@ -113,7 +117,11 @@
           "clearControlAggregation": false,
           "viewId": "main",
           "viewName": "main"
-        }
+        },
+        "shipping_details":{
+            "viewId": "shipping_details",
+            "viewName": "shipping_details"
+    }
       }
     },
     "rootView": {

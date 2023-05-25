@@ -4,9 +4,9 @@
     xmlns:f="sap.ui.layout.form"
      xmlns:t="sap.ui.table">
 <Page
-
         showNavButton="true"
         navButtonPress="onNavBack">
+
  <content>
 <f:Form editable="true">
             <f:layout>
@@ -87,12 +87,10 @@
 
             </f:Form>   
 
-<Table xmlns="sap.m" id="PaquetesMueblesTable" items="{
-    path: '/PaquetesMuebles',
-    filters: [
-        new sap.ui.model.Filter('idEnvio', sap.ui.model.FilterOperator.EQ, ${/id})
-    ]
-}"/>
+<Table  xmlns="sap.m" id="PaquetesMueblesTable"  
+items="{ path: '/PaquetesMuebles', filters: [ new sap.ui.model.Filter({ path: 'idEnvio', operator: 'EQ', value1: '{${/id}}' }) ] }"
+>
+
             <columns>
                 <Column minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline">
                     <Text text="{i18n>idPaquete}" />
@@ -153,7 +151,8 @@
                     </cells>
                 </ColumnListItem>
             </items>
-        </Table>        
+        </Table>      
+          
     </content>
 </Page>
 </mvc:View>

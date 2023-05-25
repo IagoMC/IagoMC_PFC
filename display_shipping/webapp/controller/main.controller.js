@@ -4,13 +4,13 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/Sorter"
-    //"sap/ui/model/Fragment"
+    "sap/ui/model/Sorter",
+    "sap/ui/model/Fragment"
 
 
 ],
 
-    function (Controller, Filter, FilterOperator, Sorter) {
+    function (Controller, Filter, FilterOperator, Sorter, Fragment) {
         "use strict";
 
         return Controller.extend("displayshipping.controller.main", {
@@ -174,14 +174,24 @@ sap.ui.define([
                         */
             open_dialogue: function () {
                 if (!this.oSerieDialog) {
-
-                    this.oSerieDialog = sap.ui.xmlfragment("fiori.robot.pt.robotpt.view.fragment.serie", this);
-
+                    this.oSerieDialog = sap.ui.xmlfragment("IagoMC_PFC.display_shipping.webapp.view.fragment.sort", this);
                     this.getView().addDependent(this.oSerieDialog);
-
                 }
-
+                
                 this.oSerieDialog.open();
+            },
+            onOriginSelectChange: function (event) {
+                var selectedOrigin = event.getSource().getSelectedKey();
+                var oTable = this.byId("shippingTable");
+                var oBinding = oTable.getBinding("items");
+                var oFilters = [];
+            
+                if (selectedOrigin) {
+                    var oFilter = new sap.ui.model.Filter("Origen", sap.ui.model.FilterOperator.EQ, selectedOrigin);
+                    oFilters.push(oFilter);
+                }
+            
+                oBinding.filter(oFilters);
             },
 
 

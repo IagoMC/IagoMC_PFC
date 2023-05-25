@@ -1,6 +1,7 @@
 <mvc:View controllerName="displayshipping.controller.main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
  <Page id="page" title="{i18n>title}">
  <content>
 
@@ -11,7 +12,7 @@
 
             <!-- Tabla para mostrar los envíos -->
             <Table id="shippingTable" 
-            items="{path: '/Envios', filters: [new sap.ui.model.Filter('Entregado', sap.ui.model.FilterOperator.EQ, false)]}">
+           items="{path: '/Envios', filters: [{path: 'Entregado', operator: 'EQ', value1: false}]}" >
 
 
                 <!-- Barra de herramientas con un campo de búsqueda -->
@@ -20,6 +21,13 @@
                     <OverflowToolbar>
                         <content>
                             <ToolbarSpacer/>
+                                <Select id="originSelect" width="10%" change="onOriginSelectChange">
+                                    <core:Item key="" text="{i18n>LugarOrigen}"/>
+                                    <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
+                                    <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
+                                    <core:Item key="Madrid" text="{i18n>Madrid}"/>
+                                    <core:Item key="LaCoruña" text="{i18n>LaCoruña}"/>
+                                </Select>                           
                                  <SearchField
                                     id="searchField"
                                     width="20%"
@@ -102,6 +110,7 @@
         <footer>
         <Bar>
             <contentRight>
+            <!--
             <ndc:BarcodeScannerButton
                 id="sampleBarcodeScannerButton"
                 scanSuccess="onScanSuccess"
@@ -109,14 +118,21 @@
                 inputLiveUpdate="onScanLiveupdate"
                 dialogTitle="Barcode Scanner Button Sample"
             />
-            <Button text="{i18n>AbrirDialogo}" press="onOpenDialogPress" />
+            -->           
+ <Button text="{i18n>AbrirDialogo}" press="onOpenDialogPress" />
             </contentRight>
         </Bar>
         </footer>
         <Dialog id="insertDialog" title="Insertar ID de envío" afterClose="onInsertDialogClose">
         <Input id="inputId" placeholder="{i18n>ID_envIo}" />        
-            <Button text="{i18n>Aceptar}" press="onInsertDialogConfirm" />
-            <Button text="{i18n>Cancelar}" press="onInsertDialogCancel" />
+        <Toolbar>
+            <content>
+                <Button text="{i18n>Aceptar}" press="onInsertDialogConfirm" />
+                <ToolbarSpacer/>
+
+                <Button text="{i18n>Cancelar}" press="onInsertDialogCancel" />
+            </content>
+        </Toolbar>
         </Dialog>
     </Page>
 </mvc:View>
