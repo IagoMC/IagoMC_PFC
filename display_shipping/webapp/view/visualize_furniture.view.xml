@@ -1,7 +1,84 @@
-<mvc:View controllerName="displayshipping.controller.App"
+<mvc:View controllerName="displayshipping.controller.visualize_furniture"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"
+        xmlns:f="sap.ui.layout.form"
+>
     <App id="app">
+        <Page>
+
+            <content>
+         <f:Form editable="true">
+            <f:layout>
+               <f:ResponsiveGridLayout
+                  labelSpanXL="3"
+                  labelSpanL="3"
+                  labelSpanM="3"
+                  labelSpanS="12"
+                  adjustLabelSpan="false"
+                  emptySpanXL="4"
+                  emptySpanL="4"
+                  emptySpanM="4"
+                  emptySpanS="0"
+                  columnsXL="2"
+                  columnsL="2"
+                  columnsM="1"
+                  singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+               <f:FormContainer>
+                  <f:formElements>
+                     <f:FormElement label="{i18n>id}">
+                        <f:fields>
+                           <Text text="{nombreDelModelo>/id}" />
+                        </f:fields>
+                     </f:FormElement>
+
+                     <f:FormElement label="{i18n>Nombre}">
+                        <f:fields>
+                           <Text text="{Nombre}" />
+                        </f:fields>
+                     </f:FormElement>
+
+                     <f:FormElement label="{i18n>Tipo}">
+                        <f:fields>
+                           <Text text="{Tipo}" />
+                        </f:fields>
+                     </f:FormElement>
+
+                     
+                  </f:formElements>
+               </f:FormContainer>
+
+               <f:FormContainer>
+       
+
+                  <f:formElements>
+                     <f:FormElement label="{i18n>Material}">
+                        <f:fields>
+                           <Text text="{Material}" />
+                        </f:fields>
+                     </f:FormElement>
+
+                     <f:FormElement label="{i18n>Dimensiones}">
+                        <f:fields>
+                           <Text text="{Dimensiones}" />
+                        </f:fields>
+                     </f:FormElement>
+
+                     <f:FormElement label="{i18n>Peso}">
+                        <f:fields>
+                           <Text text="{Peso}" />
+                        </f:fields>
+                     </f:FormElement>
+                  </f:formElements>
+               </f:FormContainer>
+            </f:formContainers>
+         </f:Form>     
+         
+
+                </content>
+    </Page>
+
     </App>
 </mvc:View>

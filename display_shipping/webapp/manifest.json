@@ -108,6 +108,10 @@
           "pattern": "shipping_details/{context}",
           "name": "shipping_details",
           "target": ["shipping_details"]
+        },{
+          "pattern": "visualize_furniture/{context}",
+          "name": "visualize_furniture",
+          "target": ["visualize_furniture"]
         }
       ],
       "targets": {
@@ -121,7 +125,11 @@
         "shipping_details":{
             "viewId": "shipping_details",
             "viewName": "shipping_details"
-    }
+    },
+    "visualize_furniture":{
+        "viewId": "visualize_furniture",
+        "viewName": "visualize_furniture"
+}
       }
     },
     "rootView": {

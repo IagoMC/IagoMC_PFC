@@ -8,8 +8,12 @@
         navButtonPress="onNavBack">
 
  <content>
+         <!-- Formulario para mostrar los detalles del envío -->
+
 <f:Form editable="true">
             <f:layout>
+               <!-- Diseño de la disposición de los campos del formulario -->
+
                 <f:ResponsiveGridLayout
                     labelSpanXL="3"
                     labelSpanL="3"
@@ -25,9 +29,15 @@
                     columnsM="1"
                     singleContainerFullSize="false" />
             </f:layout>
+            <!-- Contenedores del formulario -->
+
             <f:formContainers>
+               <!-- Primer contenedor -->
+
                 <f:FormContainer>
                     <f:formElements>
+                     <!-- Elementos del formulario -->
+                     
                         <f:FormElement label="{i18n>id}">
                             <f:fields>
                                 <Text text="{id}" />
@@ -53,7 +63,8 @@
                         </f:FormElement>
                     </f:formElements>
                 </f:FormContainer>
-                
+
+                <!-- Segundo contenedor -->               
                 <f:FormContainer>
                         <f:FormElement label="{i18n>Destino}">
                             <f:fields>
@@ -87,72 +98,75 @@
 
             </f:Form>   
 
-<Table  xmlns="sap.m" id="PaquetesMueblesTable"  
-items="{ path: '/PaquetesMuebles', filters: [ new sap.ui.model.Filter({ path: 'idEnvio', operator: 'EQ', value1: '{${/id}}' }) ] }"
->
+         <!-- Tabla que  visualiza los paquetes -->
 
+         <Table id="packagesTable" items="{ path: '/PaquetesMuebles'}" selectionChange="onPackageSelectionChange">
             <columns>
-                <Column minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline">
-                    <Text text="{i18n>idPaquete}" />
-                </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                    <Text text="{i18n>idMueble}" />
-                </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                    <Text text="{i18n>NombreMueble}" />
-                </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                    <Text text="{i18n>Tipo}" />
-                </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                    <Text text="{i18n>Material}" />
-                </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                    <Text text="{i18n>Dimensiones}" />
-                </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                    <Text text="{i18n>Peso}" />
-                </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                    <Text text="{i18n>Cantidad}" />
-                </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                    <Text text="{i18n>idEnvio}" />
-                </Column>
+               <!-- Columnas de la tabla -->
+
+               <Column minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>idPaquete}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>idMueble}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>NombreMueble}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Tipo}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Material}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Dimensiones}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Peso}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Cantidad}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>idEnvio}" />
+               </Column>
             </columns>
+            <!-- Elementos de la tabla -->
+
             <items>
-                <ColumnListItem type="Navigation" press="onPress">
-                    <cells>
-                        <Text text="{id}" />
-                    </cells>
-                    <cells>
-                        <Text text="{idMueble}" />
-                    </cells>
-                    <cells>
-                        <Text text="{Nombre}" />
-                    </cells>
-                    <cells>
-                        <Text text="{Tipo}" />
-                    </cells>
-                    <cells>
-                        <Text text="{Material}" />
-                    </cells>
-                    <cells>
-                        <Text text="{Dimensiones}" />
-                    </cells>
-                    <cells>
-                        <Text text="{Peso}" />
-                    </cells>
-                    <cells>
-                        <Text text="{Cantidad}" />
-                    </cells>
-                    <cells>
-                        <Text text="{idEnvio}" />
-                    </cells>
-                </ColumnListItem>
+               <ColumnListItem  type="Navigation" press="onFurniturePress">
+                  <cells>
+                     <Text text="{id}" />
+                  </cells>
+                  <cells>
+                     <Text text="{idMueble}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Nombre}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Tipo}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Material}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Dimensiones}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Peso}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Cantidad}" />
+                  </cells>
+                  <cells>
+                     <Text text="{idEnvio}" />
+                  </cells>
+               </ColumnListItem>
             </items>
-        </Table>      
-          
-    </content>
-</Page>
+         </Table>
+
+      </content>
+   </Page>
 </mvc:View>

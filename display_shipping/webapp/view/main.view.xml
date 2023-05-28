@@ -6,7 +6,7 @@
  <content>
 
             <!-- Botones para ver envíos no entregados y entregados -->
-             <ToggleButton id="shipmentsNotDeliveredButton" enabled="true" pressed="true" text="{i18n>Ver_envios_no_entregados}" press="onViewShipmentsNotDelivered" />
+             <ToggleButton id="shipmentsNotDeliveredButton" enabled="true"  pressed="true" text="{i18n>Ver_envios_no_entregados}" press="onViewShipmentsNotDelivered" />
             <ToggleButton id="shipmentsDeliveredButton" enabled="false" text="{i18n>Ver_envios_entregados}" press="onViewDeliveredShipmentsPress" />
 
 
@@ -21,21 +21,31 @@
                     <OverflowToolbar>
                         <content>
                             <ToolbarSpacer/>
-                                <Select id="originSelect" width="10%" change="onOriginSelectChange">
+                                <!-- ComboBox para filtrar por el origen -->
+                                <ComboBox placeholder="{i18n>forigin}" id="originComboBox" width="10%" change="onOriginSelectChange">
                                     <core:Item key="" text="{i18n>LugarOrigen}"/>
                                     <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
                                     <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
                                     <core:Item key="Madrid" text="{i18n>Madrid}"/>
                                     <core:Item key="LaCoruña" text="{i18n>LaCoruña}"/>
-                                </Select>                           
+                                </ComboBox>
+                                <!-- ComboBox para filtrar por el destino -->
+                                <ComboBox placeholder="{i18n>fdestination}" id="destinationComboBox" width="10%" change="onDestinationSelectChange">
+                                    <core:Item key="" text="{i18n>LugarDestino}"/>
+                                    <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
+                                    <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
+                                    <core:Item key="Madrid" text="{i18n>Madrid}"/>
+                                    <core:Item key="LaCoruña" text="{i18n>LaCoruña}"/>
+                                </ComboBox>       
+                                 <!-- Campo de búsqueda -->                                
                                  <SearchField
                                     id="searchField"
                                     width="20%"
                                     placeholder="{i18n>searchFieldPlaceholder}"
                                     search=".onSearch"/>
-
+                                <!-- Botón para ordenar -->
                                 <Button id="sort" press="open_dialogue"  tooltip="Sort" icon="sap-icon://sort"/>
-
+                                <!-- Botón para actualizar -->
                                 <Button icon="sap-icon://refresh" press="onRefresh" />
 
                         </content>
@@ -103,7 +113,6 @@
                 </items>
             </Table>
 
-            <!-- Botón para abrir un diálogo -->
 
 
         </content>
@@ -118,18 +127,23 @@
                 inputLiveUpdate="onScanLiveupdate"
                 dialogTitle="Barcode Scanner Button Sample"
             />
-            -->           
- <Button text="{i18n>AbrirDialogo}" press="onOpenDialogPress" />
+            -->    
+            <!-- Botón para abrir un diálogo -->
+
+            <Button text="{i18n>AbrirDialogo}" press="onOpenDialogPress" />
             </contentRight>
         </Bar>
         </footer>
+        <!-- Diálogo para insertar ID de envío -->
+
         <Dialog id="insertDialog" title="Insertar ID de envío" afterClose="onInsertDialogClose">
         <Input id="inputId" placeholder="{i18n>ID_envIo}" />        
         <Toolbar>
             <content>
+                <!-- Botón de confirmación -->
                 <Button text="{i18n>Aceptar}" press="onInsertDialogConfirm" />
                 <ToolbarSpacer/>
-
+                <!-- Botón de cancelación -->
                 <Button text="{i18n>Cancelar}" press="onInsertDialogCancel" />
             </content>
         </Toolbar>
