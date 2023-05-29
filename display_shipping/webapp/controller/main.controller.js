@@ -255,7 +255,7 @@ sap.ui.define([
        
             onInsertDialogConfirm: function(sId) {
                 var sPath = "/Envios('" + sId + "')";
-                var oModel = new sap.ui.model.odata.v2.ODataModel({
+                var oModel = new sap.ui.model.odata.v4.ODataModel({
                   serviceUrl: "https://81becfd3trial-dev-pfc-saphana-odatav4-srv.cfapps.us10-001.hana.ondemand.com/CatalogService/"
                 });
                 

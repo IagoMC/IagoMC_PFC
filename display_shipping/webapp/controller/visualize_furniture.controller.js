@@ -1,8 +1,10 @@
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
-  "sap/ui/model/json/JSONModel",
-  "sap/ui/model/odata/v4/ODataModel"
-], function (Controller, JSONModel, ODataModel) {
+  "sap/ui/model/Filter",
+  "sap/ui/model/FilterOperator",
+  "sap/ui/core/routing/History",
+
+], function (Controller, Filter, FilterOperator,History) {
   "use strict";
 
   return Controller.extend("displayshipping.controller.visualize_furniture", {
@@ -10,12 +12,27 @@ sap.ui.define([
       var oRouter = this.getOwnerComponent().getRouter();
       oRouter.getRoute("visualize_furniture").attachPatternMatched(this._onObjectMatched, this);
     },
+    _onObjectMatched: function(oEvent) {
+      var sFurnitureId = oEvent.getParameter("arguments").context;
+      var oTable = this.getView().byId("furnitureTable");
+      var oBinding = oTable.getBinding("items");
+      
+      var oFilter = new Filter("id", FilterOperator.EQ, sFurnitureId);
+      oBinding.filter([oFilter]);
+    },
+    onNavBack: function () {
+      // Obtener la instancia del historial de navegación
 
-    _onObjectMatchedForniture: function (oEvent) {
-      // Obtén los parámetros de la URL o cualquier otro dato necesario
-      var oArguments = oEvent.getParameter("arguments");
-      var sContext = oArguments.context;
-console.log(sContext)
-    }
-  });
+      var oHistory = History.getInstance();
+      // Obtener el hash anterior
+
+        // Si hay un hash anterior, retroceder en la historia del navegador
+
+        window.history.go(-1);
+      
+    },
+   
+
+   
+});
 });

@@ -56,15 +56,10 @@ sap.ui.define([
       var oHistory = History.getInstance();
       // Obtener el hash anterior
 
-      var sPreviousHash = oHistory.getPreviousHash();
-      if (sPreviousHash !== undefined) {
         // Si hay un hash anterior, retroceder en la historia del navegador
 
         window.history.go(-1);
-      } else {
-        var oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("home", {}, true);
-      }
+    
     },
 
     // Función llamada al cambiar la selección de un paquete en la tabla
@@ -92,7 +87,8 @@ sap.ui.define([
       var oItem = oEvent.getSource();
       var oRouter = this.getOwnerComponent().getRouter();
       oRouter.navTo("visualize_furniture", {
-          context: oItem.getBindingContext().getPath().substr(0)
+          context: oItem.getBindingContext().getObject().idMueble
+          
       });
     }
   });

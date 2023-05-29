@@ -5,9 +5,12 @@
         xmlns:f="sap.ui.layout.form"
 >
     <App id="app">
-        <Page>
+        <Page
+                showNavButton="true"
+        navButtonPress="onNavBack">
 
             <content>
+         <!--
          <f:Form editable="true">
             <f:layout>
                <f:ResponsiveGridLayout
@@ -30,7 +33,7 @@
                   <f:formElements>
                      <f:FormElement label="{i18n>id}">
                         <f:fields>
-                           <Text text="{nombreDelModelo>/id}" />
+                           <Text text="{id}" />
                         </f:fields>
                      </f:FormElement>
 
@@ -75,8 +78,57 @@
                </f:FormContainer>
             </f:formContainers>
          </f:Form>     
-         
+       -->  
+<Table id="furnitureTable" items="{path: '/Muebles'}"  selectionChange="onTableUpdateFinished">
+            <columns>
+               <!-- Columnas de la tabla -->
 
+               <Column minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>id}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Nombre}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Tipo}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Material}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Dimensiones}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Peso}" />
+               </Column>
+            
+            </columns>
+            <!-- Elementos de la tabla -->
+
+            <items>
+               <ColumnListItem>
+                  <cells>
+                     <Text text="{id}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Nombre}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Tipo}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Material}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Dimensiones}" />
+                  </cells>
+                  <cells>
+                     <Text text="{Peso}" />
+                  </cells>
+                 
+               </ColumnListItem>
+            </items>
+         </Table>
                 </content>
     </Page>
 
