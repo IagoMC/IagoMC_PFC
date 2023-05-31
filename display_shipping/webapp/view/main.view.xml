@@ -76,9 +76,11 @@
                     <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
                         <Text text="{i18n>Matricula}" />
                     </Column>
+                    <!--
                     <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
                         <Text text="{i18n>Entregado}" />
                     </Column>
+                    -->
                 </columns>
 
                 <!-- Elementos de la tabla -->
@@ -106,9 +108,10 @@
                         <cells>
                             <Text text="{Matricula}" />
                         </cells>
+                       <!--
                         <cells>
                             <Text text="{Entregado}" />
-                        </cells>
+                        </cells>-->
                     </ColumnListItem>
                 </items>
             </Table>
