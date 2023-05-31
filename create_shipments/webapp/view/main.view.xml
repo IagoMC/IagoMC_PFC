@@ -30,7 +30,7 @@
                             <f:formElements>
                                 <f:FormElement label="{i18n>id}">
                                     <f:fields>
-                                      <Text text="{lastEnvioId>/value}" />
+                                      <Text id="idEnvio" text="{lastEnvioId>/value}" />
                                     </f:fields>
 
                                 </f:FormElement>

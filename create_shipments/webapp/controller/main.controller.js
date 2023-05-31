@@ -13,17 +13,15 @@ sap.ui.define([
 
   return Controller.extend("createshipments.controller.main", {
     onInit: function () {
-     // this.mostrarUltimoId();
+     this.mostrarUltimoId();
     },
-/*
+
     mostrarUltimoId: function () {
-      var sServiceUrl = "https://81becfd3trial-dev-pfc-saphana-odatav4-srv.cfapps.us10-001.hana.ondemand.com/CatalogService/";
      
-      var oModel = new sap.ui.model.odata.v4.ODataModel(sServiceUrl, true);
+      var oModel = this.getOwnerComponent().getModel();
       
       var oView = this.getView();
-      var oModel = new sap.ui.model.json.JSONModel();
-      oView.setModel(oModel);
+ 
       
       oModel.read("/Envios", {
         success: function (oData) {
@@ -38,7 +36,7 @@ sap.ui.define([
         }
       });
      }, 
-*/
+
     onSearch: function (event) {
       // Obtener el valor de búsqueda ingresado
       var query = event.getParameter("query");
