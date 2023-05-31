@@ -27,7 +27,7 @@
                                     <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
                                     <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
                                     <core:Item key="Madrid" text="{i18n>Madrid}"/>
-                                    <core:Item key="LaCoruña" text="{i18n>LaCoruña}"/>
+                                    <core:Item key="La Coruña" text="{i18n>LaCoruña}"/>
                                 </ComboBox>
                                 <!-- ComboBox para filtrar por el destino -->
                                 <ComboBox placeholder="{i18n>fdestination}" id="destinationComboBox" width="10%" change="onDestinationSelectChange">
@@ -35,7 +35,7 @@
                                     <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
                                     <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
                                     <core:Item key="Madrid" text="{i18n>Madrid}"/>
-                                    <core:Item key="LaCoruña" text="{i18n>LaCoruña}"/>
+                                    <core:Item key="La Coruña" text="{i18n>LaCoruña}"/>
                                 </ComboBox>       
                                  <!-- Campo de búsqueda -->                                
                                  <SearchField
@@ -137,11 +137,11 @@
         <!-- Diálogo para insertar ID de envío -->
 
         <Dialog id="insertDialog" title="Insertar ID de envío" afterClose="onInsertDialogClose">
-        <Input id="inputId" placeholder="{i18n>ID_envIo}" />        
+        <Input id="inputId" placeholder="{i18n>ID_envIo}"  liveChange="onInputChange" />        
         <Toolbar>
             <content>
                 <!-- Botón de confirmación -->
-                <Button text="{i18n>Aceptar}" press="onInsertDialogConfirm" />
+                <Button text="{i18n>Aceptar}" press="onInsertDialogConfirm"  />
                 <ToolbarSpacer/>
                 <!-- Botón de cancelación -->
                 <Button text="{i18n>Cancelar}" press="onInsertDialogCancel" />
