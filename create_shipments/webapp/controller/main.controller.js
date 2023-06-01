@@ -13,9 +13,10 @@ sap.ui.define([
 
   return Controller.extend("createshipments.controller.main", {
     onInit: function () {
-     this.mostrarUltimoId();
+     //this.mostrarUltimoId();
     },
 
+    /*
     mostrarUltimoId: function () {
      
       var oModel = this.getOwnerComponent().getModel();
@@ -36,7 +37,7 @@ sap.ui.define([
         }
       });
      }, 
-
+*/
     onSearch: function (event) {
       // Obtener el valor de búsqueda ingresado
       var query = event.getParameter("query");

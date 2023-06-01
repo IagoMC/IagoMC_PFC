@@ -49,8 +49,12 @@
 
                                 <f:FormElement label="{i18n>Origen}">
                                     <f:fields>
-                                        <Input value="" />
-                                    </f:fields>
+                                <ComboBox  id="destinationComboBox" change="onOriginSelect">
+                                    <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
+                                    <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
+                                    <core:Item key="Madrid" text="{i18n>Madrid}"/>
+                                    <core:Item key="La Coruña" text="{i18n>LaCoruña}"/>
+                                </ComboBox>                                      </f:fields>
                                 </f:FormElement>
                             </f:formElements>
                         </f:FormContainer>
@@ -59,8 +63,12 @@
                             <f:formElements>
                                 <f:FormElement label="{i18n>Destino}">
                                     <f:fields>
-                                        <Input value="" />
-                                    </f:fields>
+                                <ComboBox  id="2destinationComboBox" change="onDestinationSelect">
+                                    <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
+                                    <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
+                                    <core:Item key="Madrid" text="{i18n>Madrid}"/>
+                                    <core:Item key="La Coruña" text="{i18n>LaCoruña}"/>
+                                </ComboBox>                                        </f:fields>
                                 </f:FormElement>
 
                     <f:FormElement label="{i18n>idConductor}">
@@ -70,7 +78,7 @@
                         filters: [{ path: 'Ocupado', operator: 'EQ', value1: false }]
                         }">
                         <items>
-                            <core:ListItem key="{id}" text="{Nombre} {Apellidos}" />
+                            <core:ListItem key="{id}" text="{id}  {Nombre} {Apellidos}" />
                         </items>
                         </ComboBox>
                     </f:fields>
@@ -96,13 +104,13 @@
                 <Table id="myTable" items="{/Muebles}">
                     <columns>
                     <Column>
-                        <Text text="Campo1" />
+                        <Text text="{i18n>id}" />
                     </Column>
                     <Column>
-                        <Text text="Campo2" />
+                        <Text text="{i18n>Nombre}" />
                     </Column>
                     <Column>
-                        <Text text="Campo2" />
+                        <Text text="{i18n>cantidad}" />
                     </Column>                    
                     </columns>
                     <items>
