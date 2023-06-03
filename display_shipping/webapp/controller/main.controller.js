@@ -281,13 +281,16 @@ sap.ui.define([
         var sId = this._inputValue;
 
         var sPath = "/Envios('" + sId + "')";
+        var oModel = sap.ui.getCore().getModel();
+
+        /*
         var oModel = new sap.ui.model.odata.v4.ODataModel({
           serviceUrl: "https://81becfd3trial-dev-pfc-saphana-odatav4-srv.cfapps.us10-001.hana.ondemand.com/CatalogService/"
         });
-
+*/
         if (oModel && sId) {
           var oContext = oModel.createBindingContext(sPath);
-          oModel.setProperty("Entregado", true, oContext);
+          oModel.setProperty(oContext + "/Entregado", true);
 
           oModel.submitChanges({
             success: function () {
