@@ -100,8 +100,18 @@
                         </f:FormContainer>
                     </f:formContainers>
                 </f:Form>
-                <SearchField width="20%" id="searchField" search="onSearch" ></SearchField>
-                <Table id="myTable" items="{/Muebles}">
+                <Table id="furnitureTable" items="{localModel>/furnitureArray}">
+
+
+                   <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <ToolbarSpacer/>
+                                            <SearchField width="25%" id="searchField" search=".onSearch" ></SearchField>
+
+                                    </content>
+                    </OverflowToolbar>
+                </headerToolbar>
                     <columns>
                     <Column>
                         <Text text="{i18n>id}" />
@@ -118,7 +128,7 @@
                         <cells>
                         <Text text="{id}" />
                         <Text text="{Nombre}" />
-                        <Input width="5%" value="" />
+                        <Input width="5%" value="" change="associateQuantity"/>
 
                         </cells>
                     </ColumnListItem>
@@ -126,6 +136,15 @@
                 </Table>
 
             </content>
+
+
+            <footer>
+                <Bar>
+                    <contentRight>
+                    <Button text="daw"/>
+                    </contentRight>
+                </Bar>
+            </footer>
         </Page>
     </App>
 </mvc:View>

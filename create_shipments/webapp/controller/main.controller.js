@@ -12,8 +12,36 @@ sap.ui.define([
   "use strict";
 
   return Controller.extend("createshipments.controller.main", {
+
     onInit: function () {
-     //this.mostrarUltimoId();
+      this.mostrarUltimoId();
+
+      /*
+      var oModel = new JSONModel();
+      this.getView().setModel(oModel, "localModel");
+
+      var oBinding = oModel.bindList({
+        path: "/Muebles",
+        events: {
+          dataReceived: function (oEvent) {
+            var aMuebles = oBinding.getContexts().map(function(oContext) {
+              return oContext.getObject();
+            });
+
+            var furnitureArray = [];
+            for (var i = 0; i < aMuebles.length; i++) {
+              var mueble = aMuebles[i];
+              var localObj = {
+                id: mueble.id,
+                Nombre: mueble.Nombre,
+                Cantidad: 0
+              };
+              furnitureArray.push(localObj);
+            }
+          }
+        }
+      });
+      */
     },
 
     /*
@@ -38,21 +66,51 @@ sap.ui.define([
       });
      }, 
 */
-    onSearch: function (event) {
-      // Obtener el valor de búsqueda ingresado
-      var query = event.getParameter("query");
+    onSearch: function (oEvent) {
+      var sValue = oEvent.getParameter("query");
+      var oTable = this.getView().byId("furnitureTable");
+      var oBinding = oTable.getBinding("items");
 
-      var filter = new Filter("Nombre", FilterOperator.Contains, query);
+      if (sValue) {
+        var oFilter = new sap.ui.model.Filter("Nombre", sap.ui.model.FilterOperator.Contains, sValue);
+        oBinding.filter(oFilter);
+      } else {
+        oBinding.filter([]);
+      }
+    },
+    associateQuantityWithId: function (oEvent) {
 
-      // Obtener la referencia al modelo de datos
-      var oModel = this.getView().getModel();
+    },
 
-      // Obtener la referencia a la tabla
-      var table = this.getView().byId("mueblesTable");
-
-      // Obtener la referencia al enlace de la tabla y aplicar el filtro
-      var binding = table.getBinding("items");
-      binding.filter(filter);
+    mostrarUltimoId: function () {
+      var oModel = new sap.ui.model.odata.v4.ODataModel({
+        serviceUrl: "https://81becfd3trial-dev-pfc-saphana-odatav4-srv.cfapps.us10-001.hana.ondemand.com/CatalogService/",
+        synchronizationMode: "None"
+      });
+    
+      var oView = this.getView();
+      var oTable = oView.byId("furnitureTable");
+      var oBinding = oTable.getBinding("items");
+    
+      oModel.metadataLoaded().then(function () {
+        oBinding.attachEventOnce("dataReceived", function () {
+          var aMuebles = oBinding.getCurrentContexts().map(function (oContext) {
+            return oContext.getObject();
+          });
+    
+          var lastMuebleId = aMuebles[aMuebles.length - 1].id;
+          var oJSONModel = new sap.ui.model.json.JSONModel({
+            value: lastMuebleId
+          });
+          oView.setModel(oJSONModel, "lastMuebleId");
+        });
+      });
     }
+
+
+
+
+
+
   });
 });
