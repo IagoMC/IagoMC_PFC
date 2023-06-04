@@ -28,12 +28,14 @@
                     <f:formContainers>
                         <f:FormContainer>
                             <f:formElements>
+                                <!--
                                 <f:FormElement label="{i18n>id}">
                                     <f:fields>
                                       <Text id="idEnvio" text="{lastEnvioId>/value}" />
                                     </f:fields>
 
                                 </f:FormElement>
+                                -->
 
                                 <f:FormElement label="{i18n>FechaSalida}">
                                     <f:fields>
@@ -100,7 +102,7 @@
                         </f:FormContainer>
                     </f:formContainers>
                 </f:Form>
-                <Table id="furnitureTable" items="{localModel>/furnitureArray}">
+                <Table id="furnitureTable" items="{path: '/Muebles'}">
 
 
                    <headerToolbar>
@@ -141,7 +143,7 @@
             <footer>
                 <Bar>
                     <contentRight>
-                    <Button text="daw"/>
+                    <Button text="{i18n>button}"/>
                     </contentRight>
                 </Bar>
             </footer>

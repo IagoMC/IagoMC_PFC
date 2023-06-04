@@ -14,8 +14,8 @@ sap.ui.define([
   return Controller.extend("createshipments.controller.main", {
 
     onInit: function () {
-      this.mostrarUltimoId();
-
+      //this.mostrarUltimoId();
+    
       /*
       var oModel = new JSONModel();
       this.getView().setModel(oModel, "localModel");
