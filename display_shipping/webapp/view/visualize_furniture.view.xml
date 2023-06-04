@@ -10,75 +10,7 @@
         navButtonPress="onNavBack">
 
             <content>
-         <!--
-         <f:Form editable="true">
-            <f:layout>
-               <f:ResponsiveGridLayout
-                  labelSpanXL="3"
-                  labelSpanL="3"
-                  labelSpanM="3"
-                  labelSpanS="12"
-                  adjustLabelSpan="false"
-                  emptySpanXL="4"
-                  emptySpanL="4"
-                  emptySpanM="4"
-                  emptySpanS="0"
-                  columnsXL="2"
-                  columnsL="2"
-                  columnsM="1"
-                  singleContainerFullSize="false" />
-            </f:layout>
-            <f:formContainers>
-               <f:FormContainer>
-                  <f:formElements>
-                     <f:FormElement label="{i18n>id}">
-                        <f:fields>
-                           <Text text="{id}" />
-                        </f:fields>
-                     </f:FormElement>
-
-                     <f:FormElement label="{i18n>Nombre}">
-                        <f:fields>
-                           <Text text="{Nombre}" />
-                        </f:fields>
-                     </f:FormElement>
-
-                     <f:FormElement label="{i18n>Tipo}">
-                        <f:fields>
-                           <Text text="{Tipo}" />
-                        </f:fields>
-                     </f:FormElement>
-
-                     
-                  </f:formElements>
-               </f:FormContainer>
-
-               <f:FormContainer>
-       
-
-                  <f:formElements>
-                     <f:FormElement label="{i18n>Material}">
-                        <f:fields>
-                           <Text text="{Material}" />
-                        </f:fields>
-                     </f:FormElement>
-
-                     <f:FormElement label="{i18n>Dimensiones}">
-                        <f:fields>
-                           <Text text="{Dimensiones}" />
-                        </f:fields>
-                     </f:FormElement>
-
-                     <f:FormElement label="{i18n>Peso}">
-                        <f:fields>
-                           <Text text="{Peso}" />
-                        </f:fields>
-                     </f:FormElement>
-                  </f:formElements>
-               </f:FormContainer>
-            </f:formContainers>
-         </f:Form>     
-       -->  
+<!--Tabla que permite visualizar el mueble que tiene asociado el paquete clicado anteriormente-->
 <Table id="furnitureTable" items="{path: '/Muebles'}"  selectionChange="onTableUpdateFinished">
             <columns>
                <!-- Columnas de la tabla -->
@@ -107,25 +39,15 @@
 
             <items>
                <ColumnListItem>
-                  <cells>
+
+                     <cells>
                      <Text text="{id}" />
-                  </cells>
-                  <cells>
                      <Text text="{Nombre}" />
-                  </cells>
-                  <cells>
                      <Text text="{Tipo}" />
-                  </cells>
-                  <cells>
                      <Text text="{Material}" />
-                  </cells>
-                  <cells>
                      <Text text="{Dimensiones}" />
-                  </cells>
-                  <cells>
                      <Text text="{Peso}" />
                   </cells>
-                 
                </ColumnListItem>
             </items>
          </Table>

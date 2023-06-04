@@ -1,13 +1,12 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller",
-  "sap/ui/core/routing/History",
-  "sap/ui/model/Filter",
-  "sap/ui/model/FilterOperator"
-], function (Controller, History, Filter, FilterOperator) {
+  "sap/ui/core/mvc/Controller", //Gestiona los controladores en el patrón MVC de SAPUI5.
+  "sap/ui/model/Filter",//Crea y gestiona los filtros en el modelo de datos.
+  "sap/ui/model/FilterOperator" // Proporciona una lista de operadores predinidos que se usa para filtrar en los modelos de datos
+], function (Controller, Filter, FilterOperator) {
   "use strict";
 
   return Controller.extend("displayshipping.controller.shipping_details", {
-    onInit: function () {
+      onInit: function () {
       // Obtener la instancia del enrutador
       var oRouter = this.getOwnerComponent().getRouter();
       // Asociar la función "_onObjectMatched" a la ruta "shipping_details" del enrutador
@@ -53,7 +52,6 @@ sap.ui.define([
     onNavBack: function () {
       // Obtener la instancia del historial de navegación
 
-      var oHistory = History.getInstance();
       // Obtener el hash anterior
 
         // Si hay un hash anterior, retroceder en la historia del navegador

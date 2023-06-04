@@ -22,7 +22,7 @@
                         <content>
                             <ToolbarSpacer/>
                                 <!-- ComboBox para filtrar por el origen -->
-                                <ComboBox placeholder="{i18n>forigin}" id="originComboBox" width="10%" change="onOriginSelectChange">
+                                <ComboBox placeholder="{i18n>forigin}" id="originComboBox" width="15%" change="onOriginSelectChange">
                                     <core:Item key="" text="{i18n>LugarOrigen}"/>
                                     <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
                                     <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
@@ -30,7 +30,7 @@
                                     <core:Item key="La Coruña" text="{i18n>LaCoruña}"/>
                                 </ComboBox>
                                 <!-- ComboBox para filtrar por el destino -->
-                                <ComboBox placeholder="{i18n>fdestination}" id="destinationComboBox" width="10%" change="onDestinationSelectChange">
+                                <ComboBox placeholder="{i18n>fdestination}" id="destinationComboBox" width="15%" change="onDestinationSelectChange">
                                     <core:Item key="" text="{i18n>LugarDestino}"/>
                                     <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
                                     <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
@@ -76,11 +76,7 @@
                     <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
                         <Text text="{i18n>Matricula}" />
                     </Column>
-                    <!--
-                    <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                        <Text text="{i18n>Entregado}" />
-                    </Column>
-                    -->
+                  
                 </columns>
 
                 <!-- Elementos de la tabla -->
@@ -108,10 +104,7 @@
                         <cells>
                             <Text text="{Matricula}" />
                         </cells>
-                       <!--
-                        <cells>
-                            <Text text="{Entregado}" />
-                        </cells>-->
+                 
                     </ColumnListItem>
                 </items>
             </Table>
@@ -119,19 +112,13 @@
 
 
         </content>
+
+        <!--footer de la pagina-->
         <footer>
         <Bar>
             <contentRight>
-            <!--
-            <ndc:BarcodeScannerButton
-                id="sampleBarcodeScannerButton"
-                scanSuccess="onScanSuccess"
-                scanFail="onScanError"
-                inputLiveUpdate="onScanLiveupdate"
-                dialogTitle="Barcode Scanner Button Sample"
-            />
-            -->    
-            <!-- Botón para abrir un diálogo -->
+      
+            <!-- Botón para abrir el diálogo -->
 
             <Button text="{i18n>AbrirDialogo}" press="onOpenDialogPress" />
             </contentRight>
@@ -139,7 +126,7 @@
         </footer>
         <!-- Diálogo para insertar ID de envío -->
 
-        <Dialog id="insertDialog" title="Insertar ID de envío" afterClose="onInsertDialogClose">
+        <Dialog id="insertDialog" title="{i18n>MensajeDialogo}" afterClose="onInsertDialogClose">
         <Input id="inputId" placeholder="{i18n>ID_envIo}"  liveChange="onInputChange" />        
         <Toolbar>
             <content>

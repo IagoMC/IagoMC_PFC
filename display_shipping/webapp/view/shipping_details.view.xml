@@ -12,7 +12,6 @@
 
 <f:Form editable="true">
             <f:layout>
-               <!-- Diseño de la disposición de los campos del formulario -->
 
                 <f:ResponsiveGridLayout
                     labelSpanXL="3"
@@ -29,7 +28,6 @@
                     columnsM="1"
                     singleContainerFullSize="false" />
             </f:layout>
-            <!-- Contenedores del formulario -->
 
             <f:formContainers>
                <!-- Primer contenedor -->
@@ -98,7 +96,7 @@
 
             </f:Form>   
 
-         <!-- Tabla que  visualiza los paquetes -->
+         <!-- Tabla que  visualiza los paquetes asociados al envio-->
 
          <Table id="packagesTable" items="{ path: '/PaquetesMuebles'}" selectionChange="onPackageSelectionChange">
             <columns>
@@ -116,26 +114,17 @@
                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
                   <Text text="{i18n>Tipo}" />
                </Column>
-               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                  <Text text="{i18n>Material}" />
-               </Column>
-               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                  <Text text="{i18n>Dimensiones}" />
-               </Column>
-               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                  <Text text="{i18n>Peso}" />
-               </Column>
+           
+               
                <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
                   <Text text="{i18n>Cantidad}" />
                </Column>
-               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
-                  <Text text="{i18n>idEnvio}" />
-               </Column>
+            
             </columns>
             <!-- Elementos de la tabla -->
 
             <items>
-               <ColumnListItem  type="Navigation" press="onFurniturePress">
+               <ColumnListItem  type="Navigation" press=".onFurniturePress">
                   <cells>
                      <Text text="{id}" />
                   </cells>
@@ -148,21 +137,11 @@
                   <cells>
                      <Text text="{Tipo}" />
                   </cells>
-                  <cells>
-                     <Text text="{Material}" />
-                  </cells>
-                  <cells>
-                     <Text text="{Dimensiones}" />
-                  </cells>
-                  <cells>
-                     <Text text="{Peso}" />
-                  </cells>
+                
                   <cells>
                      <Text text="{Cantidad}" />
                   </cells>
-                  <cells>
-                     <Text text="{idEnvio}" />
-                  </cells>
+            
                </ColumnListItem>
             </items>
          </Table>
