@@ -50,9 +50,7 @@ sap.ui.define([
 
     // Función llamada al navegar hacia atrás
     onNavBack: function () {
-      // Obtener la instancia del historial de navegación
-
-      // Obtener el hash anterior
+  
 
         // Si hay un hash anterior, retroceder en la historia del navegador
 
@@ -79,11 +77,13 @@ sap.ui.define([
       console.log("Valor de idEnvio:", sEnvioID);
     },
 
-    // Función llamada al presionar el botón "Furniture"
+    // Funcion que permite ir a la pagina "visualize_furniture" pasandole el id del mueble asociado al paquete
 
     onFurniturePress: function (oEvent) {
-      var oItem = oEvent.getSource();
+      var oItem = oEvent.getSource();// Obtener la instancia del enrutador
       var oRouter = this.getOwnerComponent().getRouter();
+        // Navegar a la vista "visualize_furniture" y pasar el parámetro de contexto "idMueble"
+
       oRouter.navTo("visualize_furniture", {
           context: oItem.getBindingContext().getObject().idMueble
           
