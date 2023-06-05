@@ -50,10 +50,7 @@ sap.ui.define([
 
     // Función llamada al navegar hacia atrás
     onNavBack: function () {
-  
-
-        // Si hay un hash anterior, retroceder en la historia del navegador
-
+          // Si hay un hash anterior, retroceder en la historia del navegador
         window.history.go(-1);
     
     },
@@ -61,17 +58,11 @@ sap.ui.define([
     // Función llamada al cambiar la selección de un paquete en la tabla
     onPackageSelectionChange: function (oEvent) {
       // Obtener el elemento seleccionado en la tabla
-
       var oSelectedItem = oEvent.getParameter("listItem");
-
       // Obtener el ID de envío del elemento seleccionado
-
       var sIDEnvio = oSelectedItem.getBindingContext().getProperty("idEnvio");
       // Obtener el ID de envío a partir del ID completo del envío
-
       var sEnvioID = this._getEnvioIDFromID(sIDEnvio);
-
-      // Realizar las operaciones con el valor de 'sEnvioID' entre las comillas
 
       // Ejemplo: Mostrar el valor de 'sEnvioID' en la consola
       console.log("Valor de idEnvio:", sEnvioID);
