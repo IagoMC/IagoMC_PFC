@@ -5,7 +5,6 @@
   <h2>Índice:</h2>
   <ul>
     <li><a href="#descripcion">Descripción del proyecto</a></li>
-    
     <li><a href="#estado-proyecto">Estado del proyecto</a></li>
     <li><a href="#caracteristicas">Características de la aplicación</a></li>
     <li><a href="#acceso-proyecto">Acceso al proyecto</a></li>
