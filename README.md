@@ -45,8 +45,7 @@ Página Principal:
   <li> Se implementará una función de búsqueda que permita buscar los pedidos por su ID.</li>
   <li> Se incluirá un botón para refrescar la tabla.
   <li> Se agregará un botón que permita filtrar los pedidos por fecha de destino y fecha de salida,</li>
-    
-    <li>Se agregará un boton para ordenar los envios por orden ascendente    o    descendente tanto por fecha de origen como de destino.</li>
+  <li>Se agregará un boton para ordenar los envios por orden ascendente    o    descendente tanto por fecha de origen como de destino.</li>
   <li> Se incluirá un footer con un botón que abrirá un diálogo para verificar el ID del envío.</li>
 </ul>
 
