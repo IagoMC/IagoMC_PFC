@@ -1,0 +1,150 @@
+<mvc:View controllerName="createshipments.controller.main"
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <App>
+        <Page id="page" title="{i18n>title}">
+            <content>
+
+            <!--Formulario para rellenar los datos del envio    -->
+                <f:Form id="shippingData"  editable="true">
+                    <f:layout>
+                        <f:ResponsiveGridLayout
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="3"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="4"
+                            emptySpanL="4"
+                            emptySpanM="4"
+                            emptySpanS="0"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="1"
+                            singleContainerFullSize="false" />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                        <!--Establecemos la fecha de salida-->
+                            <f:formElements>
+                                <f:FormElement label="{i18n>FechaSalida}">
+                                    <f:fields>
+                                        <DatePicker displayFormat="yyyy-MM-dd" value="" />
+                                    </f:fields>
+                                </f:FormElement>
+                        <!--Establecemos la fecha de llegada-->
+
+                                <f:FormElement label="{i18n>FechaLlegada}">
+                                    <f:fields>
+                                        <DatePicker displayFormat="yyyy-MM-dd" value="" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <!--Establecemos el lugar de origen entre las diferentes opciones-->
+
+                                <f:FormElement label="{i18n>Origen}">
+                                    <f:fields>
+                                <ComboBox  id="destinationComboBox" change="onOriginSelect">
+                                    <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
+                                    <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
+                                    <core:Item key="Madrid" text="{i18n>Madrid}"/>
+                                    <core:Item key="La Coruña" text="{i18n>LaCoruña}"/>
+                                </ComboBox>                                      </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+
+                        <f:FormContainer>
+                        <!--Establecemos el lugar de destino entre las diferentes opciones-->
+
+                            <f:formElements>
+                                <f:FormElement label="{i18n>Destino}">
+                                    <f:fields>
+                                <ComboBox  id="2destinationComboBox" change="onDestinationSelect">
+                                    <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
+                                    <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
+                                    <core:Item key="Madrid" text="{i18n>Madrid}"/>
+                                    <core:Item key="La Coruña" text="{i18n>LaCoruña}"/>
+                                </ComboBox>                                        </f:fields>
+                                </f:FormElement>
+                    <!--Seleccionamos el  conductor que no esten ocupados-->
+                    <f:FormElement label="{i18n>idConductor}">
+                    <f:fields>
+                        <ComboBox id="idConductorSelect" items="{
+                        path: '/Conductor',
+                        filters: [{ path: 'Ocupado', operator: 'EQ', value1: false }]
+                        }">
+                        <items>
+                            <core:ListItem key="{id}" text="{id}  {Nombre} {Apellidos}" />
+                        </items>
+                        </ComboBox>
+                    </f:fields>
+                    </f:FormElement>
+                    <!--Seleccionamos el vehiculo que no esten ocupados-->
+
+                    <f:FormElement label="{i18n>Matricula}">
+                    <f:fields>
+                        <ComboBox id="idVehiculoSelect" items="{
+                        path: '/Vehiculo',
+                        filters: [{ path: 'Ocupado', operator: 'EQ', value1: false }]
+                        }">
+                        <items>
+                            <core:ListItem key="{Matricula}" text="{Matricula}" />
+                        </items>
+                        </ComboBox>
+                    </f:fields>
+                    </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer>
+                    </f:formContainers>
+                </f:Form>
+
+                <!--Tabla para poder visualizar los muebles-->
+                <Table id="furnitureTable" items="{path: 'localModel>/furniture'}">
+
+                <!--Cabecera de la tabla-->
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <ToolbarSpacer/>
+                                <SearchField width="25%" id="searchField" search=".onSearch" ></SearchField>
+                         </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                    <columns>
+                    <Column>
+                        <Text text="{i18n>id}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>Nombre}" />
+                    </Column>
+                    <Column>
+                        <Input value="{i18n>cantidad}" /> 
+                    </Column>                    
+                    </columns>
+                    <items>
+                    <ColumnListItem>
+                    <cells>
+                            <Text text="{localModel>id}" />
+                            <Text text="{localModel>Nombre}" />
+                            <Input width="5%" change=".associateQuantity" /><!--Input para poder introducir la cantidad del mueble-->
+                    </cells>
+                    </ColumnListItem>
+                    </items>
+                </Table>
+
+            </content>
+
+    <!--Footer con el boton para poder crear el envio y los paquetes relaciones a este-->
+            <footer>
+                <Bar>
+                    <contentRight>
+                    <Button text="{i18n>button}" press="onCreateShipment"/>
+                    </contentRight>
+                </Bar>
+            </footer>
+        </Page>
+    </App>
+</mvc:View>
