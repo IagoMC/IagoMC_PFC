@@ -92,8 +92,7 @@ sap.ui.define([
       var oModel = oView.getModel("localModel");
       var furnitureArray = oModel.getProperty("/furniture");
 
-      var sLastEnvioId = this.getView().getModel("i18n").getResourceBundle().getText("lastEnvioId"); // Obtén el ID de envío desde algún lugar, como un modelo o una propiedad del controlador
-      // Iterar sobre el array de muebles
+      // recorre todos los muebles
 
       for (var i = 0; i < furnitureArray.length; i++) {
         var furnitureItem = furnitureArray[i];
