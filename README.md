@@ -14,7 +14,7 @@
     <li><a href="#licencia">Licencia</a></li>
   </ul>
 </nav>
-<h2 id="descripcion">Descripcion del proyecto</h2>
+<h2 id="descripcion">Descripción del proyecto</h2>
 El proyecto consiste en desarrollar dos aplicaciones para poder mejorar la gestión de envíos para una empresa que se
 dedica a la venta de kits de muebles. Una para crear los envíos y otra para recibirlos y verlos.
 <p></p>
