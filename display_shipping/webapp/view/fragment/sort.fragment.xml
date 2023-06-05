@@ -2,7 +2,7 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     >
-       
+       <!--Dialogo que permite ordenar los envio por orden descendiente o ascendiente por fecha de salido o fehca de destino-->
         <ViewSettingsDialog id="display_dialog" cancel="handleCancel" confirm="handleConfirm">
             <sortItems>
                 <ViewSettingsItem text="{i18n>FechaSalida}" key="FechaSalida"  selected="true"/>
