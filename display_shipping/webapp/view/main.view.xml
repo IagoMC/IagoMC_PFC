@@ -1,0 +1,142 @@
+<mvc:View controllerName="displayshipping.controller.main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+ <Page id="page" title="{i18n>title}">
+ <content>
+
+            <!-- Botones para ver envíos no entregados y entregados -->
+             <ToggleButton id="shipmentsNotDeliveredButton" enabled="true"  pressed="true" text="{i18n>Ver_envios_no_entregados}" press="onViewShipmentsNotDelivered" />
+            <ToggleButton id="shipmentsDeliveredButton" enabled="false" text="{i18n>Ver_envios_entregados}" press="onViewDeliveredShipmentsPress" />
+
+
+            <!-- Tabla para mostrar los envíos -->
+            <Table id="shippingTable" 
+           items="{path: '/Envios', filters: [{path: 'Entregado', operator: 'EQ', value1: false}]}" >
+
+
+                <!-- Barra de herramientas con un campo de búsqueda -->
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <ToolbarSpacer/>
+                                <!-- ComboBox para filtrar por el origen -->
+                                <ComboBox placeholder="{i18n>forigin}" id="originComboBox" width="15%" change="onOriginSelectChange">
+                                    <core:Item key="" text="{i18n>LugarOrigen}"/>
+                                    <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
+                                    <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
+                                    <core:Item key="Madrid" text="{i18n>Madrid}"/>
+                                    <core:Item key="La Coruña" text="{i18n>LaCoruña}"/>
+                                </ComboBox>
+                                <!-- ComboBox para filtrar por el destino -->
+                                <ComboBox placeholder="{i18n>fdestination}" id="destinationComboBox" width="15%" change="onDestinationSelectChange">
+                                    <core:Item key="" text="{i18n>LugarDestino}"/>
+                                    <core:Item key="Sevilla" text="{i18n>Sevilla}"/>
+                                    <core:Item key="Barcelona" text="{i18n>Barcelona}"/>
+                                    <core:Item key="Madrid" text="{i18n>Madrid}"/>
+                                    <core:Item key="La Coruña" text="{i18n>LaCoruña}"/>
+                                </ComboBox>       
+                                 <!-- Campo de búsqueda -->                                
+                                 <SearchField
+                                    id="searchField"
+                                    width="20%"
+                                    placeholder="{i18n>searchFieldPlaceholder}"
+                                    search=".onSearch"/>
+                                <!-- Botón para ordenar -->
+                                <Button id="sort" press="open_dialogue"  tooltip="Sort" icon="sap-icon://sort"/>
+                                <!-- Botón para actualizar -->
+                                <Button icon="sap-icon://refresh" press="onRefresh" />
+
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <!-- Columnas de la tabla -->
+                <columns >
+                    <!-- Definición de cada columna con un texto asociado -->
+                    <Column minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>id}" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>FechaSalida}" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>FechaLlegada}" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>Origen}" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>Destino}" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>idConductor}" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>Matricula}" />
+                    </Column>
+                  
+                </columns>
+
+                <!-- Elementos de la tabla -->
+                <items>
+                    <ColumnListItem type="Navigation" press="onPress">
+                        <!-- Celdas de cada elemento de la tabla con un texto asociado -->
+                        <cells>
+                            <Text text="{id}" />
+                        </cells>
+                        <cells>
+                            <Text text="{FechaSalida}" />
+                        </cells>
+                        <cells>
+                            <Text text="{FechaLlegada}" />
+                        </cells>
+                        <cells>
+                            <Text text="{Origen}" />
+                        </cells>
+                        <cells>
+                            <Text text="{Destino}" />
+                        </cells>
+                        <cells>
+                            <Text text="{idConductor}" />
+                        </cells>
+                        <cells>
+                            <Text text="{Matricula}" />
+                        </cells>
+                 
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+
+
+        </content>
+
+        <!--footer de la pagina-->
+        <footer>
+        <Bar>
+            <contentRight>
+      
+            <!-- Botón para abrir el diálogo -->
+
+            <Button text="{i18n>AbrirDialogo}" press="onOpenDialogPress" />
+            </contentRight>
+        </Bar>
+        </footer>
+        <!-- Diálogo para insertar ID de envío -->
+
+        <Dialog id="insertDialog" title="{i18n>MensajeDialogo}" afterClose="onInsertDialogClose">
+        <Input id="inputId" placeholder="{i18n>ID_envIo}"  liveChange="onInputChange" />        
+        <Toolbar>
+            <content>
+                <!-- Botón de confirmación -->
+                <Button text="{i18n>Aceptar}" press="onInsertDialogConfirm"  />
+                <ToolbarSpacer/>
+                <!-- Botón de cancelación -->
+                <Button text="{i18n>Cancelar}" press="onInsertDialogCancel" />
+            </content>
+        </Toolbar>
+        </Dialog>
+    </Page>
+</mvc:View>

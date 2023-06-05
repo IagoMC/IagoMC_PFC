@@ -1,0 +1,58 @@
+<mvc:View controllerName="displayshipping.controller.visualize_furniture"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+        xmlns:f="sap.ui.layout.form"
+>
+    <App id="app">
+        <Page
+                showNavButton="true"
+        navButtonPress="onNavBack">
+
+            <content>
+<!--Tabla que permite visualizar el mueble que tiene asociado el paquete clicado anteriormente-->
+<Table id="furnitureTable" items="{path: '/Muebles'}"  selectionChange="onTableUpdateFinished">
+            <columns>
+               <!-- Columnas de la tabla -->
+
+               <Column minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>id}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Nombre}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Tipo}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Material}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Dimensiones}" />
+               </Column>
+               <Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                  <Text text="{i18n>Peso}" />
+               </Column>
+            
+            </columns>
+            <!-- Elementos de la tabla -->
+
+            <items>
+               <ColumnListItem>
+
+                     <cells>
+                     <Text text="{id}" />
+                     <Text text="{Nombre}" />
+                     <Text text="{Tipo}" />
+                     <Text text="{Material}" />
+                     <Text text="{Dimensiones}" />
+                     <Text text="{Peso}" />
+                  </cells>
+               </ColumnListItem>
+            </items>
+         </Table>
+                </content>
+    </Page>
+
+    </App>
+</mvc:View>
